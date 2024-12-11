@@ -22,7 +22,9 @@ int main(int argc, char* argv[]){
 void choose(char *argv1[]){
 	
 	char* str1 = argv1[1];
-	printf("%s", str1);
+	if(str1 != "madlib1.txt" || "madlib2.txt"){
+		str1 = "madlib1.txt";
+	}
 	getInput(str1);
 }
 void getInput(char *madLibNum){
@@ -58,6 +60,7 @@ void countLines(FILE* fptr){
 }
 void match(char textArray[][MAX_LINE_LENGTH], int i){
 	
+	int count = 0;
 	for(int a=0; a<i; a++){
 		if(textArray[a][0] == 'A'){
 			printf("Please enter an adjective: ");

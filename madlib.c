@@ -8,7 +8,7 @@
 void choose(char**); //Choose a madlib from the repository
 void getInput(char*); //Count verbs, adjectives, and nouns
 void countLines(FILE*);
-void userint(); //Does the prompting and storing of user inputs
+void userint(char, int); //Does the prompting and storing of user inputs
 void match(); //matches the inputs to the correct spot in the madlib
 void display(); //displays the updated madlib
 
@@ -50,11 +50,13 @@ void countLines(FILE* fptr){
 			j = 0;
 		}
 		else{
-		textArray[i][j++] = charNum;
+			textArray[i][j++] = charNum;
 		}
 	}
-	//printf("%d,%d", i, j);
 	
+	match(textArray, i);
+}
+void match(char textArray[][MAX_LINE_LENGTH], int i){
 	
 	for(int a=0; a<i; a++){
 		if(textArray[a][0] == 'A'){
@@ -68,14 +70,15 @@ void countLines(FILE* fptr){
 			scanf("%s", &textArray[a][0]);
 		}
 	}
-	
-}
-void userint(){
-	
-}
-void match(){
+	display(textArray, i);
 
 }
-void display(){
-
+void display(char textArray[][MAX_LINE_LENGTH], int i){
+	
+	for(int a=0; a<i; a++){
+		for(int b=0; b<MAX_LINE_LENGTH; b++){
+			printf("%c", textArray[a][b]);
+		}
+	}
+	
 }
